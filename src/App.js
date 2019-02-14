@@ -1,25 +1,68 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import SearchBar from './components/SearchBar/SearchBar';
+import MovieCard from './components/MovieCard/MovieCard';
+
+import apiSearch from './Helper/apiSearch';
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      results: [],
+      apiKey: "2c73b0f220a02912d9c2cd39c09588e2",
+      apiDb: "http://api.themoviedb.org/3/",
+      defaultImg: "https://i.pinimg.com/originals/bf/e6/4b/bfe64b2af2206edbc4075aab9f08550e.jpg"
+    }
+  }
+
+  searchByTitle(search) {
+
+    if (search.length < 3) {
+
+      this.setState({ results: [] });
+      return;
+    }
+
+    apiSearch.searchByTitle(search, this.state.apiDb, this.state.apiKey, (info) => {
+      this.setState({ results: info.results });
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="App container">
+
+        <div className="row">
+          <div className="col">
+
+            <SearchBar onSearch={(value) => {
+              this.searchByTitle(value);
+            }} />
+
+          </div>
+        </div>
+
+        <div className="row">
+
+          {this.state.results.map((movie) => {
+
+            let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+            return <div className="col-sm">
+              <MovieCard
+                key={movie.id}
+                img={movie.poster_path ? image : this.state.defaultImg}
+                title={movie.title}
+                description={movie.ovewview}
+              />
+            </div>
+          })}
+
+        </div>
+
       </div>
     );
   }
