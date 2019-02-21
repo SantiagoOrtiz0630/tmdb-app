@@ -34,33 +34,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container">
+      <div className="App">
 
-        <div className="row">
-          <div className="col">
+        <div className="App__search">
 
-            <SearchBar onSearch={(value) => {
-              this.searchByTitle(value);
-            }} />
-
-          </div>
+          <SearchBar onSearch={(value) => {
+            this.searchByTitle(value);
+          }} />
         </div>
 
-        <div className="row">
+        <div className="App__films">
 
-          {this.state.results.map((movie) => {
+          <div className="App__films__cont">
 
-            let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-            return <div className="col-sm">
-              <MovieCard
+            {this.state.results.map((movie) => {
+
+              let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+              return <MovieCard
                 key={movie.id}
                 img={movie.poster_path ? image : this.state.defaultImg}
                 title={movie.title}
                 description={movie.ovewview}
               />
-            </div>
-          })}
+            })}
 
+          </div>
         </div>
 
       </div>

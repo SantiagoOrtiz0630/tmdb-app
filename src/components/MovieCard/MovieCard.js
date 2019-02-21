@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import './MovieCard.scss';
 
 const MovieCard = function (props) {
-    return <div className="card">
-        <img src={props.img} className="card-img-top" alt={props.title} />
-        <div className="card-body">
-            <h5 className="card-title">{props.title}</h5>
-            <p className="card-text">{props.description}</p>
-            <a href="#" className="btn btn-primary">Go somewhere</a>
+    return <div className="film">
+        <img src={props.img} className="film-img" alt={props.title} />
+        <div className="film-body">
+            <h5 className="film-body-title">{props.title}</h5>
+            <p className="film-body-text">{props.description}</p>
+            <a href="#" className="film-body-link">Go somewhere</a>
         </div>
     </div>;
 }
