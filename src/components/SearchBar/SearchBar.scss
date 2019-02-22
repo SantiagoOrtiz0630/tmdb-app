@@ -1,28 +1,46 @@
 @import '../../../public/variables.scss';
 
 .SearchBar{
-
+    
     width: 60%;
     height: 50px;
-
+    
     &__input{
-
+        
         width: 100%;
         height: 100%;
-
+        
         font-family: $textFont;
-
-        font-size: 13px;
-
+        font-weight: 600;
+        color: $blackColor;
+        font-style: italic;
+        
+        background-color: $grayColor;
+        
+        transition: .2s ease-in-out all;
+        
+        font-size: 14px;
+        
         padding-left: 15px;
-
+        
         border: none;
-
+        
         &:hover{
-            
-        border: none;
-        outline: none;
+            border: none;
+            outline: none;
         }
-
+        
+        &:focus{
+            background-color: $whiteColor;
+        }
+        
+        &:placeholder-shown{
+            font-family: $textFont;
+            font-weight: 600;
+            color: $blackColor;
+            font-style: italic;
+            
+        }
+        
     }
 }

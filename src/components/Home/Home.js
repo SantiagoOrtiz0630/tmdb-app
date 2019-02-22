@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.scss';
-import SearchBar from './components/SearchBar/SearchBar';
-import MovieCard from './components/MovieCard/MovieCard';
+import './Home.scss';
+import SearchBar from '../SearchBar/SearchBar';
+import MovieCard from '../MovieCard/MovieCard';
 
-import apiSearch from './Helper/apiSearch';
+import apiSearch from '../../Helper/apiSearch';
 
 
-class App extends Component {
+class Home extends Component {
 
   constructor(props) {
     super(props);
@@ -34,27 +34,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Home">
 
-        <div className="App__search">
+        <div className="Home__search">
 
           <SearchBar onSearch={(value) => {
             this.searchByTitle(value);
           }} />
         </div>
 
-        <div className="App__films">
+        <div className="Home__films">
 
-          <div className="App__films__cont">
+          <div className="Home__films__cont">
 
             {this.state.results.map((movie) => {
 
               let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
               return <MovieCard
                 key={movie.id}
+                id={movie.id}
                 img={movie.poster_path ? image : this.state.defaultImg}
                 title={movie.title}
-                description={movie.ovewview}
+                description={movie.overview}
               />
             })}
 
@@ -66,4 +67,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

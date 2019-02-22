@@ -1,13 +1,9 @@
-@import '../public/variables.scss';
+@import '../../../public/variables.scss';
 
-body {
+.Home {
     width: 100%;
-}
-
-.App {
-    width: 100%;
-    height: auto;
-    min-height: auto;
+    height: 100vh;
+    min-height: 100vh;
     
     display: flex;
     flex-direction: column;
@@ -31,6 +27,7 @@ body {
     }
     
     &__films {
+
         width: 100%;
         
         overflow: auto;
@@ -44,6 +41,7 @@ body {
         align-items: center;
         
         &__cont{
+
             height: auto;
             width: 80%;
             

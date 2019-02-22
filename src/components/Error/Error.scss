@@ -1,0 +1,23 @@
+@import '../../../public/variables.scss';
+
+.Error{
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    &-title{
+        color: $whiteColor;
+        font-size: 15px;
+        font-style: italic;
+        font-family: $titleFont;
+        font-weight: 800;
+    }
+
+}
