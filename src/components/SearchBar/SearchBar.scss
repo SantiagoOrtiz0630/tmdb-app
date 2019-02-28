@@ -3,12 +3,19 @@
 .SearchBar{
     
     width: 60%;
-    height: 50px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     
     &__input{
         
         width: 100%;
-        height: 100%;
+        height: 50px;
         
         font-family: $textFont;
         font-weight: 600;

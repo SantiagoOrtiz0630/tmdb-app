@@ -56,6 +56,7 @@ class Home extends Component {
                 img={movie.poster_path ? image : this.state.defaultImg}
                 title={movie.title}
                 description={movie.overview}
+                apiKey = {this.state.apiKey}
               />
             })}
 
