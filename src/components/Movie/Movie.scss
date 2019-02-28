@@ -1,11 +1,10 @@
 @import '../../../public/variables.scss';
 
 .Movie {
-    background-color: $blackColor;
     width: 100%;
     height: 100vh;
-    min-height: auto;
-    
+    min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -13,6 +12,42 @@
     align-content: center;
     align-items: center;
 
-    color: white;
+    &-cont {
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        background-size: cover;
+        background-position: center;
+
+        &__view {
+            width: 90%;
+            height: 90%;
+
+            background-color: transparentize($blackColor, 0.1);
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+
+            &-title {
+                color: $whiteColor;
+                font-family: $titleFont;
+                font-weight: 800;
+                font-size: 20px;
+            }
+        }
+
+    }
 
 }

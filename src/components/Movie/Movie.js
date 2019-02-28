@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import movieSearch from '../../Helper/movieSearch';
+import apiSearch from '../../Helper/apiSearch';
 
 import './Movie.scss';
-
 
 class Movie extends Component {
 
@@ -11,36 +10,53 @@ class Movie extends Component {
     super(props);
 
     this.state = {
-      apiKey: "2c73b0f220a02912d9c2cd39c09588e2",
-      apiDb: "http://api.themoviedb.org/3/",
       movie: null
     }
-
-    this.getMovie();
-
   }
 
   getId() {
-    let locationWindow = window.location.pathname;
-    let locationArray = locationWindow.split('/');
-    let movieArray = locationArray[1].split(':');
-    return movieArray.slice(-1)[0]; 
+    return this.props.match.params.id;
   }
 
   getMovie() {
-    movieSearch.searchMovie(this.getId(), this.state.apiDb, this.state.apiKey, (info) => {
+    apiSearch.searchMovie(this.getId(), (info) => {
       this.setState({ movie: info });
       console.log(this.state.movie.title);
     });
   }
 
   render() {
+
+    //para que se ejecute cada vez que se inicie
+
+    if (this.state.movie === null) {
+      this.getMovie();
+    }
+
+    //para que se ejecute cada vez que cambia su id
+    if (this.state.movie !== null) {
+      let idLink = parseInt(this.props.match.params.id);
+      let idMovie = parseInt(this.state.movie.id);
+      if (idLink !== idMovie) {
+        this.getMovie();
+      }
+    }
+
     return (
       <div className="Movie">
+        {(this.state.movie) ?
+          <div className="Movie-cont" style={ { backgroundImage: `url(${apiSearch.getImgLink()}${this.state.movie.backdrop_path})` } } >
 
-        <div className="Movie-view" > 
-        { (this.state.movie) ? <h1>{this.state.movie.title}</h1>: ""}
-        </div>
+            <div className="Movie-cont__view">
+
+              <h1 className="Movie-cont__view-title">{this.state.movie.title}</h1>
+
+
+            </div>
+
+          </div> : ""}
+
+
 
       </div>
     );

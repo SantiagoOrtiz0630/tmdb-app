@@ -13,8 +13,6 @@ class Home extends Component {
 
     this.state = {
       results: [],
-      apiKey: "2c73b0f220a02912d9c2cd39c09588e2",
-      apiDb: "http://api.themoviedb.org/3/",
       defaultImg: "https://i.pinimg.com/originals/bf/e6/4b/bfe64b2af2206edbc4075aab9f08550e.jpg"
     }
   }
@@ -27,7 +25,7 @@ class Home extends Component {
       return;
     }
 
-    apiSearch.searchByTitle(search, this.state.apiDb, this.state.apiKey, (info) => {
+    apiSearch.searchByTitle(search, (info) => {
       this.setState({ results: info.results });
     });
   }

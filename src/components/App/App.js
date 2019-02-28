@@ -6,7 +6,7 @@ import './App.scss';
 
 import Home from '../Home/Home';
 import Movie from '../Movie/Movie';
-import Error from '../Error/Error';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 class App extends Component {
 
@@ -19,8 +19,8 @@ class App extends Component {
           <Switch>
 
             <Route path="/" component={Home} exact />
-            <Route path="/Movie:id" component={Movie} exact />
-            <Route component={Error} />
+            <Route path="/Movie/:id" component={Movie} exact />
+            <Route component = {ErrorPage} />
 
           </Switch>
 
