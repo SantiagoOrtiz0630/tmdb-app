@@ -6,13 +6,16 @@ class SearchBar extends Component {
         return (
 
             <div className="SearchBar">
+                
+                <div className="SearchBar-logo"></div>
+
                 <input
                     onInput={ (event) => {
                         this.props.onSearch(event.target.value);
                     } }
                     type="text"
                     id="mainInput"
-                    className="SearchBar__input"
+                    className="SearchBar-input"
                     placeholder="Buscar canción..."></input>
             </div>
 

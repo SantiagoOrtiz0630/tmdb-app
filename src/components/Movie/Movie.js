@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import apiSearch from '../../Helper/apiSearch';
 
 import './Movie.scss';
+import SearchBar from '../SearchBar/SearchBar';
 
 class Movie extends Component {
 
@@ -43,22 +44,30 @@ class Movie extends Component {
     }
 
     return (
-      <div className="Movie">
+      <section className="Movie">
         {(this.state.movie) ?
-          <div className="Movie-cont" style={ { backgroundImage: `url(${apiSearch.getImgLink()}${this.state.movie.backdrop_path})` } } >
+          <div className="Movie-cont" style={{ backgroundImage: `url(${apiSearch.getImgLink()}${this.state.movie.backdrop_path})` }} >
 
             <div className="Movie-cont__view">
 
-              <h1 className="Movie-cont__view-title">{this.state.movie.title}</h1>
+              <div className="Movie-cont__view__contMovie">
 
+                <h1 className="Movie-cont__view__contMovie-title">{this.state.movie.title}</h1>
+
+              </div>
 
             </div>
 
-          </div> : ""}
+          </div>
+          :
+          <div className="Movie-cont" style={{ background: 'none' }}>
 
+            <h1 className="Movie-cont-load">Cargando...</h1>
 
+          </div>
 
-      </div>
+        }
+      </section>
     );
   }
 }
