@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import apiSearch from '../../Helper/apiSearch';
 
 import './Movie.scss';
-import SearchBar from '../SearchBar/SearchBar';
 
 class Movie extends Component {
 
@@ -53,6 +52,19 @@ class Movie extends Component {
               <div className="Movie-cont__view__contMovie">
 
                 <h1 className="Movie-cont__view__contMovie-title">{this.state.movie.title}</h1>
+
+                <ul className="Movie-cont__view__contMovie-companies">
+                
+                  {this.state.movie.production_companies.map((company, i) => {
+                    return <li key={i} className="Movie-cont__view__contMovie-companies__company">
+                      <h4>{company.name}</h4>
+
+                      {(company.logo_path !== null) ? <img src={`${apiSearch.getImgLink()}${company.logo_path}`} alt=""/>:""}
+                      
+                      </li>
+                  })}
+
+                </ul>
 
               </div>
 

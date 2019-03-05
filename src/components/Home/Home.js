@@ -43,9 +43,11 @@ class Home extends Component {
 
         <div className="Home__films">
 
-          <div className="Home__films__cont">
+          <div className="Home__cont">
 
             {this.state.results.map((movie) => {
+
+              console.log(movie.average);
 
               let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
               return <MovieCard
@@ -55,6 +57,7 @@ class Home extends Component {
                 title={movie.title}
                 description={movie.overview}
                 apiKey = {this.state.apiKey}
+                average = {movie.vote_average}
               />
             })}
 

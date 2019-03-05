@@ -51,14 +51,13 @@
             
             text-transform: uppercase;
         }
-        
-        &-text{
-            
-            font-family: $textFont;
-            font-size: 12px;
-            font-weight: 400;
-            color: $grayColor;
-            
+
+        &-average{
+
+                font-family: $textFont;
+                font-size: 13px;
+                font-weight: 600;
+                color: $grayColor;
         }
         
         &-link{

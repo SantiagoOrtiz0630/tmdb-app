@@ -9,7 +9,7 @@ const MovieCard = function (props) {
             <img src={props.img} className="film-img" alt={props.title} />
             <div className="film-body">
                 <h5 className="film-body-title">{props.title}</h5>
-                <p className="film-body-text">{props.description}</p>
+            <h4 className="film-body-average">{props.average}</h4>
             </div>
         </div>
     </Link>)
