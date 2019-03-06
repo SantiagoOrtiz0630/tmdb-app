@@ -50,7 +50,7 @@ class Home extends Component {
               return <MovieCard
                 key={movie.id}
                 id={movie.id}
-                img={movie.poster_path ? image : apiSearch.defaultImg}
+                img={movie.poster_path ? image : apiSearch.defaultImg()}
                 title={movie.title}
                 description={movie.overview}
                 apiKey = {this.state.apiKey}

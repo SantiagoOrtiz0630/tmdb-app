@@ -43,7 +43,7 @@ class Movie extends Component {
     }
 
     return (
-      
+
       <section className="Movie">
         {(this.state.movie) ?
           <div className="Movie-cont" style={{ backgroundImage: `url(${apiSearch.getImgLink()}${this.state.movie.backdrop_path})` }} >
@@ -52,20 +52,32 @@ class Movie extends Component {
 
               <div className="Movie-cont__view__contMovie">
 
-                <h1 className="Movie-cont__view__contMovie-title">{ this.state.movie.title }</h1>
+                <h1 className="Movie-cont__view__contMovie-title">{this.state.movie.title}</h1>
+
+                {this.state.movie.poster_path ?
+                  <img src={`https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`} alt={this.state.movie.title} />
+                  :
+                  <img className="Movie-cont__view__contMovie-img" src={apiSearch.getDefaultImg()} alt={this.state.movie.title} />}
+
 
                 <ul className="Movie-cont__view__contMovie-companies">
-                
+
                   {this.state.movie.production_companies.map((company, i) => {
                     return <li key={i} className="Movie-cont__view__contMovie-companies__company">
 
                       <h4>{company.name}</h4>
-                      {(company.logo_path !== null) ? <img src={`${apiSearch.getImgLink()}${company.logo_path}`} alt=""/> : <img src={`${apiSearch.getDefaultImg()}` } alt=""/> }
-                      
-                      </li>
-                  })}
 
+                      {(company.logo_path !== null) ?
+                        <img src={`${apiSearch.getImgLink()}${company.logo_path}`} alt={company.name} />
+                        :
+                        <img src={apiSearch.getDefaultImg()} alt={company.name} />}
+
+                    </li>
+                  })}
                 </ul>
+
+                {this.state.movie.production_companies.length === 0 ? <h5>No hay información de Productoras</h5> : ""}
+
 
               </div>
 
