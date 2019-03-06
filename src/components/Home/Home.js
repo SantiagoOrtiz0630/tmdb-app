@@ -12,8 +12,7 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      results: [],
-      defaultImg: "https://i.pinimg.com/originals/bf/e6/4b/bfe64b2af2206edbc4075aab9f08550e.jpg"
+      results: []
     }
   }
 
@@ -47,13 +46,11 @@ class Home extends Component {
 
             {this.state.results.map((movie) => {
 
-              console.log(movie.average);
-
               let image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
               return <MovieCard
                 key={movie.id}
                 id={movie.id}
-                img={movie.poster_path ? image : this.state.defaultImg}
+                img={movie.poster_path ? image : apiSearch.defaultImg}
                 title={movie.title}
                 description={movie.overview}
                 apiKey = {this.state.apiKey}

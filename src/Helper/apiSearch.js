@@ -36,5 +36,8 @@ export default {
     },
     getImgLink(){
         return "https://image.tmdb.org/t/p/original";
+    },
+    getDefaultImg(){
+        return "https://poppin.imgix.net/products/swatch/swatch_dark_gray.jpg";
     }
 }

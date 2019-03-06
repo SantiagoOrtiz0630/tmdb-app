@@ -18,8 +18,8 @@ class App extends Component {
 
           <Switch>
 
-            <Route path="/" component={Home} exact />
-            <Route path="/Movie/:id" component={Movie} exact />
+            <Route path="/" component = {Home} exact />
+            <Route path="/Movie/:id" component = {Movie} exact />
             <Route component = {ErrorPage} />
 
           </Switch>
